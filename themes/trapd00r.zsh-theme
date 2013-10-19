@@ -1,4 +1,4 @@
-# Name:   trapd00r zsh theme
+# Name: trapd00r zsh theme
 # Author: Magnus Woldrich <m@japh.se>
 #
 # This theme needs a terminal supporting 256 colors as well as unicode. It also
@@ -10,7 +10,7 @@
 # scp1@shiva:pts/9-> /home » scp1 (0)
 # >
 #
-# that's  user@host:pts/-> splitted path (return status)
+# that's user@host:pts/-> splitted path (return status)
 #
 # If the current directory is a git repository, we span 3 lines;
 #
@@ -68,28 +68,28 @@ add-zsh-hook precmd prompt_jnrowe_precmd
 prompt_jnrowe_precmd () {
   vcs_info
   if [ "${vcs_info_msg_0_}" = "" ]; then
-    dir_status="%{$c1%}%n%{$c4%}@%{$c2%}%m%{$c0%}:%{$c3%}%l%{$c6%}->%{$(zsh_path)%} %{$c0%}(%{$c5%}%?%{$c0%})"
+    #dir_status="%{$c1%}%n%{$c4%}@%{$c2%}%m%{$c0%}:%{$c3%}%l%{$c6%}->%{$(zsh_path)%} %{$c0%}(%{$c5%}%?%{$c0%})"
     PROMPT='%{$fg_bold[green]%}%p%{$reset_color%}${vcs_info_msg_0_}${dir_status} ${ret_status}%{$reset_color%}
 > '
 
 # modified, to be commited
   elif [[ $(git diff --cached --name-status 2>/dev/null ) != "" ]]; then
-    dir_status="%{$c1%}%n%{$c4%}@%{$c2%}%m%{$c0%}:%{$c3%}%l%{$c6%}->%{$(zsh_path)%} %{$c0%}(%{$c5%}%?%{$c0%})"
+    #dir_status="%{$c1%}%n%{$c4%}@%{$c2%}%m%{$c0%}:%{$c3%}%l%{$c6%}->%{$(zsh_path)%} %{$c0%}(%{$c5%}%?%{$c0%})"
     PROMPT='${vcs_info_msg_0_}%{$30%} %{$bg_bold[red]%}%{$fg_bold[cyan]%}C%{$fg_bold[black]%}OMMIT%{$reset_color%}
 %{$fg_bold[green]%}%p%{$reset_color%}${dir_status}%{$reset_color%}
 > '
 
   elif [[ $(git diff --name-status 2>/dev/null ) != "" ]]; then
-    dir_status="%{$c1%}%n%{$c4%}@%{$c2%}%m%{$c0%}:%{$c3%}%l%{$c6%}->%{$(zsh_path)%} %{$c0%}(%{$c5%}%?%{$c0%})"
+    #dir_status="%{$c1%}%n%{$c4%}@%{$c2%}%m%{$c0%}:%{$c3%}%l%{$c6%}->%{$(zsh_path)%} %{$c0%}(%{$c5%}%?%{$c0%})"
     PROMPT='${vcs_info_msg_0_}%{$bg_bold[red]%}%{$fg_bold[blue]%}D%{$fg_bold[black]%}IRTY%{$reset_color%}
 %{$fg_bold[green]%}%p%{$reset_color%}${dir_status}%{$reset_color%}
 %{$c13%}>%{$c0%} '
   else
-    dir_status="%{$c1%}%n%{$c4%}@%{$c2%}%m%{$c0%}:%{$c3%}%l%{$c6%}->%{$(zsh_path)%} %{$c0%}(%{$c5%}%?%{$c0%})"
+    #dir_status="%{$c1%}%n%{$c4%}@%{$c2%}%m%{$c0%}:%{$c3%}%l%{$c6%}->%{$(zsh_path)%} %{$c0%}(%{$c5%}%?%{$c0%})"
     PROMPT='${vcs_info_msg_0_}
 %{$fg_bold[green]%}%p%{$reset_color%}${dir_status} ${vcs_info_msg_0_}%{$reset_color%}
 > '
 fi
 }
 
-#  vim: set ft=zsh sw=2 et tw=0:
+# vim: set ft=zsh sw=2 et tw=0:
