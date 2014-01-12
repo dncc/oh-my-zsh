@@ -40,18 +40,18 @@ if [ "$TERM" = "linux" ]; then
 fi
 
 zstyle ':vcs_info:*' actionformats \
-    '%{$c8%}(%f%s)%{$c7%}-%F{5}[%F{2}%b%F{3}|%F{1}%a%F{5}]%f '
+    "%{$c8%}(%f%s)%{$c7%}-%F{5}[%F{2}%b%F{3}|%F{1}%a%F{5}]%f "
 
 zstyle ':vcs_info:*' formats \
-    "%{$c8%}%s%%{$c7%}❨%{$c9%}%{$c11%}%b%{$c7%}❩%{$reset_color%}%f "
+    "%{$c8%}%s%{$c7%}(%{$c9%}%{$c1%}%b%{$c7%})%{$reset_color%}%f "
 
 zstyle ':vcs_info:(sv[nk]|bzr):*' branchformat '%b%F{1}:%F{3}%r'
 zstyle ':vcs_info:*' enable git
 
-dir_status="%{$fg_bold[cyan]%}%n%{$reset_color%}@%{$fg_bold[blue]%}%m%{$c0%}:%{$fg_bold[green]%}%0~%{$reset_color%}"
+dir_status="%{$fg[cyan]%}%n%{$reset_color%}@%{$fg[blue]%}%m%{$c0%}:%{$fg[green]%}%0~%{$reset_color%}"
 ret_code="%{$fg[red]%}%(?.. [%?])%{$reset_color%}"
 
-PROMPT='%{$fg_bold[green]%}%p%{$reset_color%}${dir_status}${ret_code}%{$reset_color%} %{$c1%}$%{$reset_color%} '
+PROMPT='%{$fg[green]%}%p%{$reset_color%}${dir_status}${ret_code}%{$reset_color%} %{$c1%}$%{$reset_color%} '
 
 add-zsh-hook precmd rprompt_precmd
 
@@ -61,10 +61,10 @@ rprompt_precmd () {
     RPROMPT='${vcs_info_msg_0_}'
 # modified, to be commited
   elif [[ $(git diff --cached --name-status 2>/dev/null ) != "" ]]; then
-    RPROMPT='${vcs_info_msg_0_}%{$30%} %{$bg_bold[red]%}%{$fg_bold[blue]%}C%{$fg_bold[cyan]%}OMM%{$fg_bold[black]%}IT%{$reset_color%}'
+    RPROMPT='${vcs_info_msg_0_}%{$30%} %{$fg_bold[blue]%}c%{$fg_bold[cyan]%}omm%{$fg_bold[black]%}it%{$reset_color%}'
 
   elif [[ $(git diff --name-status 2>/dev/null ) != "" ]]; then
-    RPROMPT='${vcs_info_msg_0_}%{$bg_bold[red]%}%{$fg_bold[blue]%}D%{$fg_bold[cyan]%}IR%{$fg_bold[black]%}TY%{$reset_color%}'
+    RPROMPT='${vcs_info_msg_0_}%{$fg_bold[blue]%}d%{$fg_bold[cyan]%}ir%{$fg_bold[black]%}ty%{$reset_color%}'
   else
     RPROMPT='${vcs_info_msg_0_}'
 fi
